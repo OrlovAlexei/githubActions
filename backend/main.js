@@ -1,5 +1,3 @@
-console.log("aaaaaaaaa")
-
 export const deviceChecker = userAgent => {
   // Simple UA string search
   const find = needle => {
@@ -126,3 +124,5 @@ export const deviceChecker = userAgent => {
 
   return device;
 };
+
+console.log("ТестовыйТест")
