@@ -1,0 +1,4 @@
+- name: Run eslint with reviewdog
+  uses: reviewdog/action-eslint@v1.0.0
+  with:
+    github_token: "${{ github.token }}"
