@@ -11,3 +11,4 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           github_token: "${{ github.token }}"
+          reporter: github-pr-review
