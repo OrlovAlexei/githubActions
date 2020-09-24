@@ -9,6 +9,6 @@ jobs:
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
-        level: warning
-        reporter: github-pr-check
-        filter_mode: diff_context
+          level: warning
+          reporter: github-pr-check
+          filter_mode: diff_context
