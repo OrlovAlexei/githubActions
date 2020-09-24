@@ -1,1 +1,1 @@
-console.log("Hello javascript")
+var helloMessage = "Hello javascript"
