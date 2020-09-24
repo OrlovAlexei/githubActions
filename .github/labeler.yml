@@ -1,1 +1,4 @@
-any: ['front','back']
+front:
+  - frontend/**/*
+back:
+  - backend/**/*
