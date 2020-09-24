@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "es2017": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "prefer-const": "error",
+    "no-console": "error"
+  }
+}

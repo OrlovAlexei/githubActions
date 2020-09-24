@@ -1,0 +1,1 @@
+var helloMessage = "Hello javascript"
