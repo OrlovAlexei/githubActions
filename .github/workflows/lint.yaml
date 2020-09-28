@@ -9,5 +9,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-        with:
-          cmd: eslint:github-action
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ${{ env.working-directory }}
+      - name: linting...
+        run: eslint:github-action
+        working-directory: ${{ env.working-directory }}
