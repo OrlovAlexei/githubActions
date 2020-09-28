@@ -1,0 +1,8 @@
+runner:
+  eslint:
+    cmd: eslint src
+    errorformat:
+      - "%E%f:%l:%c: %m"
+      - "%E%f:%l: %m"
+      - "%C%.%#"
+    level: warning
