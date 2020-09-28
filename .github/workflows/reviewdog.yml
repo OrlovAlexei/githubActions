@@ -1,4 +1,4 @@
-name: Lint2
+name: dogreview
 on: [pull_request]
 jobs:
   build:
