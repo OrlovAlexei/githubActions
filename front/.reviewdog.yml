@@ -1,6 +1,7 @@
 runner:
   eslint:
     cmd: -reporter=github-pr-review -runners=eslint -diff=git diff master
+    diff: git diff master
     errorformat:
       - "%E%f:%l:%c: %m"
       - "%E%f:%l: %m"
