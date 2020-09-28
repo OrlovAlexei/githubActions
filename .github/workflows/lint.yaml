@@ -13,5 +13,5 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: ${{ env.working-directory }}
       - name: linting...
-        run: eslint:github-action
+        run: yarn eslint:github-action
         working-directory: ${{ env.working-directory }}
