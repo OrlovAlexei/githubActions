@@ -1,6 +1,6 @@
 runner:
   eslint:
-    cmd: eslint src
+    cmd: -reporter=github-pr-review -runners=eslint
     errorformat:
       - "%E%f:%l:%c: %m"
       - "%E%f:%l: %m"
