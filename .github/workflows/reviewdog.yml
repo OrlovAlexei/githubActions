@@ -9,14 +9,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         working-directory: ${{ env.working-directory }}
-      - uses: reviewdog/action-setup@v1
-        with:
-          reviewdog_version: latest
+
       - name: Run reviewdog
-        working-directory: ${{ env.working-directory }}
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: reviewdog
+          run: yarn eslint './front/src' |  reviewdog -f=eslint -reporter=github-pr-check
