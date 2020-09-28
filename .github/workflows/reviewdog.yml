@@ -15,4 +15,4 @@ jobs:
           level: warning
           fail_on_error: true
           workdir: ./front
-          eslint_flags: ./front/src
+          eslint_flags: src

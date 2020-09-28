@@ -1,3 +1,1 @@
-var helloMessage = "Hello javascript"
-
-console.log(helloMessage)
+console.log("Нет нет нет")
