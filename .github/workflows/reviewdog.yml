@@ -18,4 +18,4 @@ jobs:
         working-directory: ${{ env.working-directory }}
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn eslint './front/src' |  reviewdog -f=eslint -reporter=github-pr-check
+        run: yarn eslint src |  reviewdog -f=eslint -reporter=github-pr-check
