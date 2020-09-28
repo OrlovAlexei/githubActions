@@ -9,15 +9,13 @@ jobs:
       working-directory: front
     steps:
       - uses: actions/checkout@v1
-      - name: install deps
+      - name: Install deps2
         run: yarn install
         working-directory: ${{ env.working-directory }}
-      - name: eslint
-        uses: reviewdog/action-eslint@v1
+      - uses: reviewdog/action-setup@v1
         with:
-          github_token: "${{ github.token }}"
-          reporter: github-pr-review
-          level: warning
-          fail_on_error: true
-          workdir: ./front
-          eslint_flags: src
+          reviewdog_version: latest
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: reviewdog -reporter=github-pr-review -name="eslint"
