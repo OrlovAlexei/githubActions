@@ -12,11 +12,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
         working-directory: ${{ env.working-directory }}
-      - name: linting...
-        uses: reviewdog/action-setup@v1
+      - uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
       - name: Run reviewdog
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: reviewdog -reporter=github-pr-review -runners=eslint -fail-on-error
+          run: reviewdog -reporter=github-pr-review -runners=eslint
