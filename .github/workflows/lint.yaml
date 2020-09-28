@@ -1,4 +1,4 @@
-name: Lint
+name: Lint2
 on: [pull_request]
 jobs:
   build:
@@ -9,9 +9,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: cd ./front && yarn install # will run `yarn install` command
-      - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: eslint:github-action
