@@ -19,4 +19,4 @@ jobs:
         working-directory: ${{ env.working-directory }}
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: reviewdog
+        run: reviewdog -diff=git diff master
