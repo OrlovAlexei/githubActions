@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: install deps
+        run: yarn
+        working-directory: ${{ env.working-directory }}
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:
@@ -15,4 +18,4 @@ jobs:
           level: warning
           fail_on_error: true
           workdir: ./front
-          eslint_flags: ./front/src
+          eslint_flags: src
