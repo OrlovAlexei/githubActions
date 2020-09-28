@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: install deps
-        run: yarn
+        run: yarn install
         working-directory: ${{ env.working-directory }}
       - name: eslint
         uses: reviewdog/action-eslint@v1
