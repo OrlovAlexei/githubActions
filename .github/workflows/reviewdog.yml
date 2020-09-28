@@ -17,4 +17,4 @@ jobs:
       - name: Run reviewdog
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: yarn eslint './front/src' |  reviewdog -f=eslint -reporter=github-pr-check
+        run: yarn eslint './front/src' |  reviewdog -f=eslint -reporter=github-pr-check
