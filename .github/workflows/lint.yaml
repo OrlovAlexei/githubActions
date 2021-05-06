@@ -18,6 +18,7 @@ jobs:
 
 
   lint:
+    needs: dependencies
     name: Start es-lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
