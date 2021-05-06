@@ -1,5 +1,6 @@
 name: Lint
 on: [pull_request]
+
 jobs:
   dependencies:
     name: Install dependencies
@@ -17,12 +18,13 @@ jobs:
 
 
   lint:
-    needs: dependencies
     name: Start es-lint
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install  --frozen-lockfile
       - name: Cache node modules
         uses: actions/cache@v2
         with:
