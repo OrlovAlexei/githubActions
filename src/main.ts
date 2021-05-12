@@ -1,1 +1,7 @@
-console.log("Привет");
+// console.log("Привет");
+
+function test() {
+  return null;
+}
+
+test();
