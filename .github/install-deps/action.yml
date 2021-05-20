@@ -1,5 +1,7 @@
 inputs:
-  name: "Install dependencies from custom action"
+  name:
+    description: 'Your name'
+    default: 'No name provided'
 runs-on: ubuntu-latest
 timeout-minutes: 10
 steps:
