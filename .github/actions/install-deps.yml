@@ -1,0 +1,15 @@
+inputs:
+  name: "Install dependencies from custom action"
+runs-on: ubuntu-latest
+timeout-minutes: 10
+steps:
+      - name: Cache node modules
+        id: cache-node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
+        run: yarn install  --frozen-lockfile
