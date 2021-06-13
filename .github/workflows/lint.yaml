@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: githubActions/sayhello@v1
+    - uses: user/sayhello@v1
       with:
         name: "MySuperName"
 
