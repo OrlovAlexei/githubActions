@@ -3,7 +3,7 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - id: step1
       uses: actions/setup-python@v1
