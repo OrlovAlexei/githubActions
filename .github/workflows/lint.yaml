@@ -10,7 +10,7 @@ jobs:
       - id: foo
         uses: OrlovAlexei/githubActions/.github/actions/goodbye@master
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: 'Me and only me'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 
