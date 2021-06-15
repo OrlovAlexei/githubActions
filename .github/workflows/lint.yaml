@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: foo
-        uses: OrlovAlexei/hello-world-composite-run-steps-action/actions/goodbye/@v1
+        uses: OrlovAlexei/hello-world-composite-run-steps-action/actions/goodbye@v1.0.2
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
