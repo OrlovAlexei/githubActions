@@ -10,53 +10,24 @@ jobs:
       - id: foo
         uses: OrlovAlexei/githubActions/.github/actions/goodbye@master
         with:
-          who-to-greet: 'Me and me '
+          who-to-greet: "Me and me "
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 
-  dependencies:
-    name: Install dependencies
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v1
-      - name: Cache node modules
-        id: cache-node_modules
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
-        run: yarn install  --frozen-lockfile
-
-  lint:
-    needs: dependencies
-    name: Start es-lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v1
-      - name: Read cache node modules
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Linting
-        run: yarn eslint:ci
-
   build:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Read cache node modules
         uses: actions/cache@v2
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
       - name: Build app
         run: tsc
+      - name: Upload dist folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist$GITHUB_REF_NAME
+          path: dist
+          retention-days: 1
