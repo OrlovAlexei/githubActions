@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DIST_NAME: ${{ format('dist') }}
+      DIST_NAME: ${{ format('dist_{0}', github.event.pull_request.head.sha) }}
     steps:
       - uses: actions/checkout@v1
       - name: Read cache node modules
