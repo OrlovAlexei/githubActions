@@ -16,6 +16,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    env:
+      DIST_NAME: ${{ format('dist_{0}', github.sha) }}
     steps:
       - uses: actions/checkout@v1
       - name: Read cache node modules
@@ -28,6 +30,6 @@ jobs:
       - name: Upload dist folder
         uses: actions/upload-artifact@v2
         with:
-          name: dist{{$GITHUB_REF_NAME}}
+          name: ${{ env.DIST_NAME }}
           path: dist/
           retention-days: 1
