@@ -12,13 +12,12 @@ jobs:
     if: ${{github.event.pull_request.merged == true}}
     name: Check artifact downloading
     runs-on: ubuntu-latest
+    env:
+      DIST_NAME: ${{ format('dist_{0}', github.event.pull_request.head.sha) }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v1
-      - name: Show GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      - run: env
       - name: Cache node modules
         id: cache-node_modules
         uses: actions/cache@v2
@@ -26,12 +25,13 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-      - run: env
       - name: Download Artifact
-        uses: actions/download-artifact@v2
+        uses: dawidd6/action-download-artifact@v2
         env:
           DIST_NAME: ${{ format('dist_{0}', github.event.pull_request.head.sha) }}
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          workflow: lint.yaml
           name: ${{ env.DIST_NAME }}
       - name: Ls
         run: "ls -l"
