@@ -25,6 +25,10 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Show GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Build app
         run: tsc
       - run: env
