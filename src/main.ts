@@ -3,3 +3,9 @@ function test() {
 }
 
 test();
+
+function test1() {
+  return null;
+}
+
+test1();
