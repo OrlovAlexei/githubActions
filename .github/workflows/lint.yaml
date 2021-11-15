@@ -27,6 +27,7 @@ jobs:
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
       - name: Build app
         run: tsc
+      - run: env
       - name: Upload dist folder
         uses: actions/upload-artifact@v2
         with:
