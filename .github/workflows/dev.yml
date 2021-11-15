@@ -16,6 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: echo "$GITHUB_CONTEXT"
+      - name: Show GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Cache node modules
         id: cache-node_modules
         uses: actions/cache@v2
