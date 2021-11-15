@@ -33,5 +33,6 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: lint.yaml
           name: ${{ env.DIST_NAME }}
+          path: dist
       - name: Ls
         run: "ls -l"
