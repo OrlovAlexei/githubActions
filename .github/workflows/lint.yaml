@@ -71,5 +71,3 @@ jobs:
           headless: true
           install: false
           browser: chrome
-          # build: yarn build:dev
-          # start: yarn serve -l 8081
