@@ -29,9 +29,7 @@ jobs:
           name: ${{ env.DIST_NAME }}
           path: build
       - name: Mark Clean Install
-        env:
-          FOLDERS: ${{ find . -maxdepth 1 -type d -printf '%f\n' }}
-        if: ${{!contains(env.FOLDERS, 'dist') }}
+        if: ${{!contains(find . -maxdepth 1 -type d -printf '%f\n', 'dist') }}
         run: CLEAN_INSTALL="true"
 
       - name: Read actions/cache
