@@ -33,7 +33,7 @@ jobs:
       - name: ECHO APP FOLDERS
         run: echo $APP_FOLDERS
       - name: Mark Clean Install
-        if: ${{!contains(APP_FOLDERS, 'dist') }}
+        if: ${{!contains($APP_FOLDERS, 'dist') }}
         run: CLEAN_INSTALL="true"
 
       - name: Read actions/cache
