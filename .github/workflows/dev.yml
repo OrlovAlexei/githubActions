@@ -20,6 +20,7 @@ jobs:
       - run: env
       - name: Download Artifact
         uses: dawidd6/action-download-artifact@v2
+        continue-on-error: true
         env:
           DIST_NAME: ${{ format('build2_{0}', github.event.pull_request.head.sha) }}
         with:
@@ -29,8 +30,7 @@ jobs:
           path: build
       - name: Mark Clean Install
         if: failure()
-        run: |
-          echo "CLEAN_INSTALL=true"
+        run: CLEAN_INSTALL="true"
 
       - name: Read actions/cache
         if: ${{ env.CLEAN_INSTALL == true }}
