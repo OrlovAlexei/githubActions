@@ -10,6 +10,8 @@ on:
 jobs:
   checkArtifact:
     if: ${{github.event.pull_request.merged == true}}
+    env:
+      CLEAN_INSTALL: false
     name: Check artifact downloading
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -19,11 +21,26 @@ jobs:
       - name: Download Artifact
         uses: dawidd6/action-download-artifact@v2
         env:
-          DIST_NAME: ${{ format('build_{0}', github.event.pull_request.head.sha) }}
+          DIST_NAME: ${{ format('build2_{0}', github.event.pull_request.head.sha) }}
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: lint.yaml
           name: ${{ env.DIST_NAME }}
           path: build
+      - name: Mark Clean Install
+
+      - name: Read node_modules cache
+        run: |
+          echo "CLEAN_INSTALL=true"
+        if: failure()
+      - name: Read actions/cache
+        if: ${{ env.CLEAN_INSTALL == true }}
+        uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        if: ${{ env.CLEAN_INSTALL == true }}
+        run: yarn install --frozen-lockfile
       - name: Ls
         run: "ls -l"
