@@ -28,11 +28,10 @@ jobs:
           name: ${{ env.DIST_NAME }}
           path: build
       - name: Mark Clean Install
-
-      - name: Read node_modules cache
+        if: failure()
         run: |
           echo "CLEAN_INSTALL=true"
-        if: failure()
+
       - name: Read actions/cache
         if: ${{ env.CLEAN_INSTALL == true }}
         uses: actions/cache@v2
