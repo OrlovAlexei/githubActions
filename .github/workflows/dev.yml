@@ -30,6 +30,8 @@ jobs:
           path: build
       - name: App folders
         run: echo "APP_FOLDERS=$(find . -maxdepth 1 -type d -printf '%f\n')" >> $GITHUB_ENV
+      - name: ECHO APP FOLDERS
+        run: echo $APP_FOLDERS
       - name: Mark Clean Install
         if: ${{!contains(APP_FOLDERS, 'dist') }}
         run: CLEAN_INSTALL="true"
