@@ -9,7 +9,6 @@ on:
 
 jobs:
   checkArtifact:
-    if: ${{github.event.pull_request.merged == true}}
     env:
       CLEAN_INSTALL: false
     name: Check artifact downloading
