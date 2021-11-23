@@ -4,8 +4,8 @@
 name: Build and push dev
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches: [master]
 
 jobs:
   checkArtifact:
@@ -29,7 +29,9 @@ jobs:
           name: ${{ env.DIST_NAME }}
           path: build
       - name: Mark Clean Install
-        if: failure()
+        env:
+          FOLDERS: ${{ find . -maxdepth 1 -type d -printf '%f\n' }}
+        if: ${{!contains(env.FOLDERS, 'dist') }}
         run: CLEAN_INSTALL="true"
 
       - name: Read actions/cache
