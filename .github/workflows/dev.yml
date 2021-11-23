@@ -28,8 +28,10 @@ jobs:
           workflow: lint.yaml
           name: ${{ env.DIST_NAME }}
           path: build
+      - name: App folders
+        run: echo "APP_FOLDERS=$(find . -maxdepth 1 -type d -printf '%f\n')" >> $GITHUB_ENV
       - name: Mark Clean Install
-        if: ${{!contains(find . -maxdepth 1 -type d -printf '%f\n', 'dist') }}
+        if: ${{!contains(APP_FOLDERS, 'dist') }}
         run: CLEAN_INSTALL="true"
 
       - name: Read actions/cache
